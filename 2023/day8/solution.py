@@ -23,7 +23,7 @@ def get_nodes(node_neighbour):
             ending_nodes.append(node)
     return starting_nodes, ending_nodes
 
-def get_step_count(lines):
+def part_one(lines):
     node_neighbour, instructions = parsed_input(lines)
     current_node = 'AAA'
     count = 0
@@ -34,7 +34,7 @@ def get_step_count(lines):
             if current_node == 'ZZZ':
                 return count
         
-def multiple_nodes(lines):
+def part_two(lines):
     node_neighbour, instructions = parsed_input(lines)
     starting_nodes, ending_nodes = get_nodes(node_neighbour)
 
@@ -53,6 +53,6 @@ def multiple_nodes(lines):
 with open('input.txt') as file:
     lines = file.read().strip()
 
-print(get_step_count(lines))
+print(part_one(lines))
 
-print(multiple_nodes(lines))
+print(part_two(lines))
