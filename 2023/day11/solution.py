@@ -25,7 +25,6 @@ def shortest_dist(input_data):
                 if col_indices[i] < index < col_indices[j] or col_indices[j] < index < col_indices[i]:
                     count += 1
             total_length += abs(row_indices[i]-row_indices[j]) + abs(col_indices[i]-col_indices[j])
-    
     return total_length, count
 
 with open('input.txt') as file:
@@ -36,7 +35,7 @@ input_data = np.array([list(line) for line in lines])
 shortest_distance, count = shortest_dist(input_data)
 
 
-print(shortest_distance + count)
+print('Part 1:',shortest_distance + count)
 
-print(shortest_distance + (1000000-1)*count)
+print('Part 2:',shortest_distance + (1000000-1)*count)
 
