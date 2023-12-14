@@ -4,7 +4,6 @@ def north_load(array):
     final_sum = 0
     nrows, ncols = array.shape
     for j in range(nrows):
-        # print()
         final_sum += np.count_nonzero(array[j] == 'O')*(ncols - j)
     return final_sum
 
@@ -30,27 +29,6 @@ def spin_cycle(array):
         array = np.rot90(tilt_north(array), k = -1).copy()
     return array
 
-def floyds_cycle_detection(values):
-    tortoise = values[0]
-    hare = values[0]
-
-    while True:
-        tortoise = values[tortoise]
-        hare = values[values[hare]]
-
-        if tortoise == hare:
-            break
-
-    tortoise = values[0]
-    while tortoise != hare:
-        tortoise = values[tortoise]
-        hare = values[hare]
-
-    return hare 
-
-
-
-
 
 with open('input.txt') as file:
     lines = [list(line) for line in file.read().strip().split('\n')]
@@ -63,22 +41,26 @@ print(nrows, ncols)
 round_rocks_rows, round_rocks_cols = np.where(input_data == 'O')
 
 tilted_array = input_data
-# print('@@\n',tilted_array)
-print(north_load(tilted_array))
 
-# final_sum, tilted_array = north_load(tilted_array)
+print('Part 1:',north_load(tilt_north(tilted_array)))
 
-
-tilted_arrays = {}
+tilted_arrays = []
 for i in range(200):
-    tilted_array = spin_cycle(tilted_array).copy()
-    
+    tilted_array = spin_cycle(tilted_array)
+    tilted_list = tilted_array.tolist()
+    # print(north_load(tilted_array))
+    if tilted_list in tilted_arrays:
+        cycle_start = tilted_arrays.index(tilted_list)
+        cycle_end = i  # excluding i
+        break
+    else:
+        tilted_arrays.append(tilted_list)
 
 
+total_cycles = 1000000000-1
 
+index = (total_cycles - cycle_start) % (cycle_end  - cycle_start) + cycle_start
 
+print(index)
 
-# final_sum, tilted_array = north_load(tilted_array)
-
-# print(tilted_array)
- 
+print('Part 2:',north_load(np.array(tilted_arrays[index])))
