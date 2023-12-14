@@ -19,12 +19,12 @@ def row_reflection(lines):
     palindrome_start = None
     for i,line in enumerate(lines):
         if line not in visited:
-            print('$$$$', i)
+            # print('$$$$', i)
             visited.append(line)
             if palindrome:
-                print('palindrome')
+                # print('palindrome')
                 if lines[i-1] == lines[0]:
-                    print('!!!!!!!!!!',i)
+                    # print('!!!!!!!!!!',i)
                     return i//2
                 
                 for k in range(i):
@@ -33,25 +33,25 @@ def row_reflection(lines):
         else:
             if palindrome:
                 if indices[i-1] != 0:
-                    print('#####',i)
+                    # print('#####',i)
                     indices[i] = 1
                     palindrome = False
                 else:
                     if lines[i] == lines[2*palindrome_start - i- 1]:
-                        print('^^^^^',i)
+                        # print('^^^^^',i)
                         indices[i] = 0
 
             elif palindrome == False:
                 if visited[-1] == line:
                     palindrome_start = i
-                    print('&&&&', i)
+                    # print('&&&&', i)
                     palindrome = True
                     indices[i] = 0
                 else:
-                    print('((()))', i)
+                    # print('((()))', i)
                     visited.append(line)
 
-    print(indices)
+    # print(indices)
     return is_reflection(indices)
 
 def col_reflection(lines):
@@ -62,25 +62,36 @@ def col_reflection(lines):
 def get_summary(input_data):
     summerize = 0
     for input in input_data:
-        print(input, '\n\n')
+        # print(input, '\n\n')
         lines = input.split('\n')
         nrows = row_reflection(lines)
         if nrows == 0:
             ncols = col_reflection(lines)
             summerize += ncols
-            # print(ncols)
-            # print('col@@@',col_reflection(lines))
-            # print(input)
         else:
-            # print('####',row_reflection(lines))
-            # print(input)
-            print(nrows)
+            # print(nrows)
             summerize += 100*(nrows)
     return summerize
 
 
-with open('input.txt') as file:
+# def get_smudged_summary(input_data):
+#     for input in input_data:
+#         lines = input.split('\n')
+#         for i in range(len(lines)):
+#             for j in range(i, len(lines)):
+#                 difference = 0
+#                 for k in range(len(lines[i])):
+#                     if lines[i][k] != lines[j][k]:
+#                         difference += 1
+#                         if difference > 1:
+#                             break
+
+
+
+
+with open('trial.txt') as file:
     input_data = file.read().strip().split('\n\n')
 
 
 print(get_summary(input_data))
+print(get_smudged_summary(input_data))
