@@ -1,4 +1,5 @@
 --- Day 15: Lens Library ---
+
 [https://adventofcode.com/2023/day/15](https://adventofcode.com/2023/day/15)
 
 The newly-focused parabolic reflector dish is sending all of the collected light to a point on the side of yet another mountain - the largest mountain on Lava Island. As you approach the mountain, you find that the light is being collected by the wall of a large facility embedded in the mountainside.
@@ -60,11 +61,12 @@ ab=5 becomes 197.
 pc- becomes 48.
 pc=6 becomes 214.
 ot=7 becomes 231.
+
+
 In this example, the sum of these results is 1320. Unfortunately, the reindeer has stolen the page containing the expected verification number and is currently running around the facility with it excitedly.
 
 Run the HASH algorithm on each step in the initialization sequence. What is the sum of the results? (The initialization sequence is one long line; be careful when copy-pasting it.)
 
-Your puzzle answer was 507666.
 
 --- Part Two ---
 You convince the reindeer to bring you the page; the page confirms that your HASH algorithm is working.
@@ -93,7 +95,7 @@ If the operation character is an equals sign (=), it will be followed by a numbe
 If there is already a lens in the box with the same label, replace the old lens with the new lens: remove the old lens and put the new lens in its place, not moving any other lenses in the box.
 If there is not already a lens in the box with the same label, add the lens to the box immediately behind any lenses already in the box. Don't move any of the other lenses when you do this. If there aren't any lenses in the box, the new lens goes all the way to the front of the box.
 Here is the contents of every box after each step in the example initialization sequence above:
-
+```
 After "rn=1":
 Box 0: [rn 1]
 
@@ -134,6 +136,7 @@ Box 3: [ot 9] [ab 5] [pc 6]
 After "ot=7":
 Box 0: [rn 1] [cm 2]
 Box 3: [ot 7] [ab 5] [pc 6]
+```
 All 256 boxes are always present; only the boxes that contain any lenses are shown here. Within each box, lenses are listed from front to back; each lens is shown as its label and focal length in square brackets.
 
 To confirm that all of the lenses are installed correctly, add up the focusing power of all of the lenses. The focusing power of a single lens is the result of multiplying together:
