@@ -73,11 +73,14 @@ You convince the reindeer to bring you the page; the page confirms that your HAS
 
 The book goes on to describe a series of 256 boxes numbered 0 through 255. The boxes are arranged in a line starting from the point where light enters the facility. The boxes have holes that allow light to pass from one box to the next all the way down the line.
 
+```
       +-----+  +-----+         +-----+
 Light | Box |  | Box |   ...   | Box |
 ----------------------------------------->
       |  0  |  |  1  |   ...   | 255 |
       +-----+  +-----+         +-----+
+```
+
 Inside each box, there are several lens slots that will keep a lens correctly positioned to focus light passing through the box. The side of each box has a panel that opens to allow you to insert or remove lenses as necessary.
 
 Along the wall running parallel to the boxes is a large library containing lenses organized by focal length ranging from 1 through 9. The reindeer also brings you a small handheld label printer.
