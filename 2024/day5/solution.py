@@ -46,8 +46,6 @@ def topologicalSort(listToOrder):
             if incomingEdgeCounts[neighbor] == 0:
                 queue.append(neighbor)
 
-    # if len(sortedList) != len(allElements):
-    #     raise ValueError("Cycle detected in rules!")
     return sortedList
 
 
@@ -68,8 +66,7 @@ for rawUpdate in rawUpdates:
                 sumPart2 += getMiddleUpdate(topologicalSort(update))
                 break
     if rightOrder == True:
-        sumPart1 += int(update[int((len(update)-1)/2)])
-
+        sumPart1 += getMiddleUpdate(update)
 
 
 
