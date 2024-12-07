@@ -4,9 +4,7 @@ with open('input.txt') as file:
 def isValidEqualtion(testValue, numbers, includeConcat = False, index=0, accumulated=None, operations=[]):
     if accumulated is None:
         accumulated = numbers[0]
-
     if index == len(numbers) -1:
-        print(accumulated)
         if accumulated == testValue:
             return True
         else:
@@ -42,8 +40,8 @@ def isValidEqualtion(testValue, numbers, includeConcat = False, index=0, accumul
             numbers,
             includeConcat,
             index + 1,
-            int(f"{accumulated}{index + 1}"),
-            operations
+            int(f"{accumulated}{numbers[index + 1]}"),
+            operations + ["||"]
         )
         # print(accumulated, index + 1)
         if resultConcat:
