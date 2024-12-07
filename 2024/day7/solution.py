@@ -4,48 +4,43 @@ with open('input.txt') as file:
 def isValidEqualtion(testValue, numbers, includeConcat = False, index=0, accumulated=None, operations=[]):
     if accumulated is None:
         accumulated = numbers[0]
+
+    if accumulated > testValue:
+        return False
+    
     if index == len(numbers) -1:
         if accumulated == testValue:
             return True
         else:
             return False
         
-    resultAdd = isValidEqualtion(
+    if isValidEqualtion(
         testValue, 
         numbers,
         includeConcat,
         index + 1,
         accumulated + numbers[index + 1],
         operations + ["+"]
-    )
-
-    if resultAdd:
-        return True
+    ):return True
     
-    resultMultiply = isValidEqualtion(
+    if isValidEqualtion(
         testValue, 
         numbers,
         includeConcat,
         index + 1,
         accumulated * numbers[index + 1],
         operations + ["*"]
-    )
+    ):return True
 
-    if resultMultiply:
-        return True
-    
     if includeConcat:
-        resultConcat = isValidEqualtion(
+        if isValidEqualtion(
             testValue,
             numbers,
             includeConcat,
             index + 1,
             int(f"{accumulated}{numbers[index + 1]}"),
             operations + ["||"]
-        )
-        # print(accumulated, index + 1)
-        if resultConcat:
-            return True
+        ): return True
     
     return False
 
