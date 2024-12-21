@@ -82,5 +82,5 @@ def getShotest(grid, start, end, cheatDist = 2, timeSaved = 100):
     return cheats
         
 
-print(getShotest(grid, start, end))
-print(getShotest(grid, start, end, 20, 100))
+print("Part 1:", getShotest(grid, start, end))
+print("Part 2:", getShotest(grid, start, end, 20, 100))
