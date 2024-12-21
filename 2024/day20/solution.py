@@ -1,5 +1,7 @@
 from collections import deque, defaultdict
+import time
 
+startTime = time.time()
 with open('input.txt') as file:
     lines  = file.read().strip().split("\n")
 
@@ -84,3 +86,5 @@ def getShotest(grid, start, end, cheatDist = 2, timeSaved = 100):
 
 print("Part 1:", getShotest(grid, start, end))
 print("Part 2:", getShotest(grid, start, end, 20, 100))
+
+print("--- %s seconds ---" % (time.time() - startTime))
